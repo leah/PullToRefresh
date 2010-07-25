@@ -49,7 +49,7 @@
 
 - (void)addItem {
     // Add a new time
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
     [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
     NSString *now = [dateFormatter stringFromDate:[NSDate date]];
     [items insertObject:[NSString stringWithFormat:@"%@", now] atIndex:0];
@@ -60,6 +60,7 @@
 }
 
 - (void)dealloc {
+    [items release];
     [super dealloc];
 }
 
