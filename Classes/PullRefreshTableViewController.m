@@ -62,10 +62,10 @@
     refreshLabel.font = [UIFont boldSystemFontOfSize:12.0];
     refreshLabel.textAlignment = UITextAlignmentCenter;
 
-    refreshArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"pull-arrow.png"]];
-    refreshArrow.frame = CGRectMake((REFRESH_HEADER_HEIGHT - refreshArrow.frame.size.width) / 2,
-                                    (REFRESH_HEADER_HEIGHT - refreshArrow.frame.size.height) / 2,
-                                    refreshArrow.frame.size.width, refreshArrow.frame.size.height);
+    refreshArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow.png"]];
+    refreshArrow.frame = CGRectMake((REFRESH_HEADER_HEIGHT - 27) / 2,
+                                    (REFRESH_HEADER_HEIGHT - 44) / 2,
+                                    27, 44);
 
     refreshSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     refreshSpinner.frame = CGRectMake((REFRESH_HEADER_HEIGHT - 20) / 2, (REFRESH_HEADER_HEIGHT - 20) / 2, 20, 20);
