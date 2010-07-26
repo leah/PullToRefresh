@@ -8,16 +8,15 @@ and [EGOTableViewPullRefresh](http://github.com/enormego/EGOTableViewPullRefresh
 
 How to intall
 
-1. Copy the files, [PullRefreshTableViewController.h](http://github.com/leah/PullToRefresh/raw/master/Classes/PullRefreshTableViewController.h)
-and [PullRefreshTableViewController.m](http://github.com/leah/PullToRefresh/blob/master/Classes/PullRefreshTableViewController.m) into your project.
+1. Copy the files, [PullRefreshTableViewController.h](http://github.com/leah/PullToRefresh/raw/master/Classes/PullRefreshTableViewController.h),
+[PullRefreshTableViewController.m](http://github.com/leah/PullToRefresh/blob/master/Classes/PullRefreshTableViewController.m),
+and [arrow.png](http://github.com/leah/PullToRefresh/raw/master/arrow.png) into your project.
 
-2. Copy the [pull-arrow.png](http://github.com/leah/PullToRefresh/raw/master/pull-arrow.png) into your project.
+2. Link against the QuartzCore framework (used for rotating the arrow image).
 
-3. Link against the QuartzCore framework (used for rotating the arrow image).
+3. Create a TableViewController that is a subclass of PullRefreshTableViewController.
 
-4. Create a TableViewController that is a subclass of PullRefreshTableViewController.
-
-5. Customize by adding your own refresh() method.
+4. Customize by adding your own refresh() method.
 
 
 Enjoy!
