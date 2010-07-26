@@ -86,7 +86,7 @@
     if (isLoading) {
         // Update the content inset, good for section headers
         if (scrollView.contentOffset.y > 0)
-            self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+            self.tableView.contentInset = UIEdgeInsetsZero;
         else if (scrollView.contentOffset.y >= -REFRESH_HEADER_HEIGHT)
             self.tableView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
     } else if (isDragging && scrollView.contentOffset.y < 0) {
@@ -135,7 +135,7 @@
     [UIView animateWithDuration:0.3
                      animations:^{
                          // Hide the header
-                         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+                         self.tableView.contentInset = UIEdgeInsetsZero;
                          [refreshArrow layer].transform = CATransform3DMakeRotation(M_PI * 2, 0, 0, 1);
                      }
                      completion:^(BOOL finished){
