@@ -36,6 +36,8 @@
     }
 
     cell.textLabel.text = [items objectAtIndex:[indexPath indexAtPosition: 1]];
+	cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
     return cell;
 }
 
