@@ -43,13 +43,13 @@
     NSString *textLoading;
 }
 
-@property (nonatomic, retain) IBOutlet UIView *refreshHeaderView;
-@property (nonatomic, retain) IBOutlet UILabel *refreshLabel;
-@property (nonatomic, retain) IBOutlet UIImageView *refreshArrow;
-@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *refreshSpinner;
-@property (nonatomic, retain) IBOutlet NSString *textPull;
-@property (nonatomic, retain) IBOutlet NSString *textRelease;
-@property (nonatomic, retain) IBOutlet NSString *textLoading;
+@property (nonatomic, retain) UIView *refreshHeaderView;
+@property (nonatomic, retain) UILabel *refreshLabel;
+@property (nonatomic, retain) UIImageView *refreshArrow;
+@property (nonatomic, retain) UIActivityIndicatorView *refreshSpinner;
+@property (nonatomic, retain) NSString *textPull;
+@property (nonatomic, retain) NSString *textRelease;
+@property (nonatomic, retain) NSString *textLoading;
 
 - (void)addPullToRefreshHeader;
 - (void)startLoading;
