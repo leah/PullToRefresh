@@ -40,9 +40,11 @@
 - (id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
     if (self != nil) {
-        self.textPull = @"Pull down to refresh...";
-        self.textRelease = @"Release to refresh...";
-        self.textLoading = @"Loading...";
+        // Shouldn't use setters in init/dealloc
+        // http://stackoverflow.com/questions/3150494/objective-c-dot-syntax-and-init
+        textPull = [[NSString alloc] initWithString:@"Pull down to refresh..."];
+        textRelease = [[NSString alloc] initWithString:@"Release to refresh..."];
+        textLoading = [[NSString alloc] initWithString:@"Loading..."];
         demoTimer = nil;
     }
     return self;
