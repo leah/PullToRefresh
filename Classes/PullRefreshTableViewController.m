@@ -43,7 +43,6 @@
         textPull = [[NSString alloc] initWithString:@"Pull down to refresh..."];
         textRelease = [[NSString alloc] initWithString:@"Release to refresh..."];
         textLoading = [[NSString alloc] initWithString:@"Loading..."];
-        demoTimer = nil;
     }
     return self;
 }
@@ -149,11 +148,7 @@
 - (void)refresh {
     // This is just a demo. Override this method with your custom reload action.
     // Don't forget to call stopLoading at the end.
-    demoTimer = [NSTimer scheduledTimerWithTimeInterval: 2.0
-                                                 target: self
-                                               selector: @selector(stopLoading)
-                                               userInfo: nil
-                                                repeats: NO];
+    [self performSelector:@selector(stopLoading) withObject:nil afterDelay:2.0];
 }
 
 - (void)dealloc {
@@ -161,7 +156,6 @@
     [refreshLabel release];
     [refreshArrow release];
     [refreshSpinner release];
-    [demoTimer release];
     [textPull release];
     [textRelease release];
     [textLoading release];

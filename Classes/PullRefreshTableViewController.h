@@ -35,7 +35,6 @@
     UILabel *refreshLabel;
     UIImageView *refreshArrow;
     UIActivityIndicatorView *refreshSpinner;
-    NSTimer *demoTimer;
     BOOL isDragging;
     BOOL isLoading;
     NSString *textPull;

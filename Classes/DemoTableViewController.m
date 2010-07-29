@@ -41,11 +41,7 @@
 }
 
 - (void)refresh {
-    demoTimer = [NSTimer scheduledTimerWithTimeInterval: 2.0
-                                                 target: self
-                                               selector: @selector(addItem)
-                                               userInfo: nil
-                                                repeats: NO];
+    [self performSelector:@selector(addItem) withObject:nil afterDelay:2.0];
 }
 
 - (void)addItem {
