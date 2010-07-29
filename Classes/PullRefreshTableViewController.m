@@ -113,36 +113,39 @@
 }
 
 - (void)startLoading {
-    [UIView animateWithDuration:0.3
-                     animations:^{
-                         // Show the header
-                         self.tableView.contentInset = UIEdgeInsetsMake(REFRESH_HEADER_HEIGHT, 0, 0, 0);
-                         refreshLabel.text = self.textLoading;
-                         refreshArrow.hidden = YES;
-                         [refreshSpinner startAnimating];
-                     }
-                     completion:^(BOOL finished){
-                         // Refresh action!
-                         isLoading = YES;
-                         [self refresh];
-                     }];
+    isLoading = YES;
+
+    // Show the header
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
+    self.tableView.contentInset = UIEdgeInsetsMake(REFRESH_HEADER_HEIGHT, 0, 0, 0);
+    refreshLabel.text = self.textLoading;
+    refreshArrow.hidden = YES;
+    [refreshSpinner startAnimating];
+    [UIView commitAnimations];
+
+    // Refresh action!
+    [self refresh];
 }
 
 - (void)stopLoading {
+    // Hide the header
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDuration:0.3];
+    [UIView setAnimationDidStopSelector:@selector(stopLoadingComplete:finished:context:)];
+    self.tableView.contentInset = UIEdgeInsetsZero;
+    [refreshArrow layer].transform = CATransform3DMakeRotation(M_PI * 2, 0, 0, 1);
+    [UIView commitAnimations];
+}
+
+- (void)stopLoadingComplete:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
     isLoading = NO;
-    // Hide and reset the header
-    [UIView animateWithDuration:0.3
-                     animations:^{
-                         // Hide the header
-                         self.tableView.contentInset = UIEdgeInsetsZero;
-                         [refreshArrow layer].transform = CATransform3DMakeRotation(M_PI * 2, 0, 0, 1);
-                     }
-                     completion:^(BOOL finished){
-                         // Reset the header
-                         refreshLabel.text = self.textPull;
-                         refreshArrow.hidden = NO;
-                         [refreshSpinner stopAnimating];
-                     }];
+
+    // Reset the header
+    refreshLabel.text = self.textPull;
+    refreshArrow.hidden = NO;
+    [refreshSpinner stopAnimating];
 }
 
 - (void)refresh {
