@@ -39,12 +39,24 @@
 - (id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
     if (self != nil) {
-		width = [[UIScreen mainScreen] bounds].size.width;
-        textPull = [[NSString alloc] initWithString:@"Pull down to refresh..."];
-        textRelease = [[NSString alloc] initWithString:@"Release to refresh..."];
-        textLoading = [[NSString alloc] initWithString:@"Loading..."];
+		[self performSelector:@selector(setup)];
     }
     return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:(NSCoder *)aDecoder];
+    if (self != nil) {
+		[self performSelector:@selector(setup)];
+    }
+    return self;
+}
+
+- (void)setup {
+	width = [[UIScreen mainScreen] bounds].size.width;
+	textPull = [[NSString alloc] initWithString:@"Pull down to refresh..."];
+	textRelease = [[NSString alloc] initWithString:@"Release to refresh..."];
+	textLoading = [[NSString alloc] initWithString:@"Loading..."];
 }
 
 - (void)viewDidLoad {
@@ -59,11 +71,13 @@
 - (void)addPullToRefreshHeader {
     refreshHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0 - REFRESH_HEADER_HEIGHT, width, REFRESH_HEADER_HEIGHT)];
     refreshHeaderView.backgroundColor = [UIColor clearColor];
+	refreshHeaderView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 
     refreshLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, REFRESH_HEADER_HEIGHT)];
     refreshLabel.backgroundColor = [UIColor clearColor];
     refreshLabel.font = [UIFont boldSystemFontOfSize:12.0];
     refreshLabel.textAlignment = UITextAlignmentCenter;
+	refreshLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 
     refreshArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow.png"]];
     refreshArrow.frame = CGRectMake((REFRESH_HEADER_HEIGHT - 27) / 2,
