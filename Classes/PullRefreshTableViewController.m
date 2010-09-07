@@ -53,7 +53,6 @@
 }
 
 - (void)setup {
-	width = [[UIScreen mainScreen] bounds].size.width;
 	textPull = [[NSString alloc] initWithString:@"Pull down to refresh..."];
 	textRelease = [[NSString alloc] initWithString:@"Release to refresh..."];
 	textLoading = [[NSString alloc] initWithString:@"Loading..."];
@@ -69,6 +68,7 @@
 }
 
 - (void)addPullToRefreshHeader {
+	CGFloat width = [[UIScreen mainScreen] bounds].size.width;
     refreshHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0 - REFRESH_HEADER_HEIGHT, width, REFRESH_HEADER_HEIGHT)];
     refreshHeaderView.backgroundColor = [UIColor clearColor];
 	refreshHeaderView.autoresizingMask = UIViewAutoresizingFlexibleWidth;

@@ -40,7 +40,6 @@
     NSString *textPull;
     NSString *textRelease;
     NSString *textLoading;
-	CGFloat	width;
 }
 
 @property (nonatomic, retain) UIView *refreshHeaderView;
