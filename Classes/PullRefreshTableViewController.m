@@ -62,12 +62,12 @@
     refreshLabel.textAlignment = UITextAlignmentCenter;
 
     refreshArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow.png"]];
-    refreshArrow.frame = CGRectMake((REFRESH_HEADER_HEIGHT - 27) / 2,
-                                    (REFRESH_HEADER_HEIGHT - 44) / 2,
+    refreshArrow.frame = CGRectMake(floorf((REFRESH_HEADER_HEIGHT - 27) / 2),
+                                    (floorf(REFRESH_HEADER_HEIGHT - 44) / 2),
                                     27, 44);
 
     refreshSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    refreshSpinner.frame = CGRectMake((REFRESH_HEADER_HEIGHT - 20) / 2, (REFRESH_HEADER_HEIGHT - 20) / 2, 20, 20);
+    refreshSpinner.frame = CGRectMake(floorf(floorf(REFRESH_HEADER_HEIGHT - 20) / 2), floorf((REFRESH_HEADER_HEIGHT - 20) / 2), 20, 20);
     refreshSpinner.hidesWhenStopped = YES;
 
     [refreshHeaderView addSubview:refreshLabel];
