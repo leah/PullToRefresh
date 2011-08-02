@@ -38,18 +38,38 @@
 @synthesize textPull, textRelease, textLoading, refreshHeaderView, refreshLabel, refreshArrow, refreshSpinner;
 
 - (id)initWithStyle:(UITableViewStyle)style {
-    self = [super initWithStyle:style];
-    if (self != nil) {
-        textPull = [[NSString alloc] initWithString:@"Pull down to refresh..."];
-        textRelease = [[NSString alloc] initWithString:@"Release to refresh..."];
-        textLoading = [[NSString alloc] initWithString:@"Loading..."];
-    }
-    return self;
+  self = [super initWithStyle:style];
+  if (self != nil) {
+    [self setupStrings];
+  }
+  return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+  self = [super initWithCoder:aDecoder];
+  if (self != nil) {
+    [self setupStrings];
+  }
+  return self;
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+  if (self != nil) {
+    [self setupStrings];
+  }
+  return self;
 }
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    [self addPullToRefreshHeader];
+  [super viewDidLoad];
+  [self addPullToRefreshHeader];
+}
+
+- (void)setupStrings{
+  textPull = [[NSString alloc] initWithString:@"Pull down to refresh..."];
+  textRelease = [[NSString alloc] initWithString:@"Release to refresh..."];
+  textLoading = [[NSString alloc] initWithString:@"Loading..."];
 }
 
 - (void)addPullToRefreshHeader {
@@ -62,12 +82,12 @@
     refreshLabel.textAlignment = UITextAlignmentCenter;
 
     refreshArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow.png"]];
-    refreshArrow.frame = CGRectMake((REFRESH_HEADER_HEIGHT - 27) / 2,
-                                    (REFRESH_HEADER_HEIGHT - 44) / 2,
+    refreshArrow.frame = CGRectMake(floorf((REFRESH_HEADER_HEIGHT - 27) / 2),
+                                    (floorf(REFRESH_HEADER_HEIGHT - 44) / 2),
                                     27, 44);
 
     refreshSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    refreshSpinner.frame = CGRectMake((REFRESH_HEADER_HEIGHT - 20) / 2, (REFRESH_HEADER_HEIGHT - 20) / 2, 20, 20);
+    refreshSpinner.frame = CGRectMake(floorf(floorf(REFRESH_HEADER_HEIGHT - 20) / 2), floorf((REFRESH_HEADER_HEIGHT - 20) / 2), 20, 20);
     refreshSpinner.hidesWhenStopped = YES;
 
     [refreshHeaderView addSubview:refreshLabel];
