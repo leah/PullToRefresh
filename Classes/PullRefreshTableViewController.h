@@ -50,6 +50,7 @@
 @property (nonatomic, copy) NSString *textRelease;
 @property (nonatomic, copy) NSString *textLoading;
 
+- (void)setupStrings;
 - (void)addPullToRefreshHeader;
 - (void)startLoading;
 - (void)stopLoading;

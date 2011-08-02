@@ -38,18 +38,38 @@
 @synthesize textPull, textRelease, textLoading, refreshHeaderView, refreshLabel, refreshArrow, refreshSpinner;
 
 - (id)initWithStyle:(UITableViewStyle)style {
-    self = [super initWithStyle:style];
-    if (self != nil) {
-        textPull = [[NSString alloc] initWithString:@"Pull down to refresh..."];
-        textRelease = [[NSString alloc] initWithString:@"Release to refresh..."];
-        textLoading = [[NSString alloc] initWithString:@"Loading..."];
-    }
-    return self;
+  self = [super initWithStyle:style];
+  if (self != nil) {
+    [self setupStrings];
+  }
+  return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+  self = [super initWithCoder:aDecoder];
+  if (self != nil) {
+    [self setupStrings];
+  }
+  return self;
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+  if (self != nil) {
+    [self setupStrings];
+  }
+  return self;
 }
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    [self addPullToRefreshHeader];
+  [super viewDidLoad];
+  [self addPullToRefreshHeader];
+}
+
+- (void)setupStrings{
+  textPull = [[NSString alloc] initWithString:@"Pull down to refresh..."];
+  textRelease = [[NSString alloc] initWithString:@"Release to refresh..."];
+  textLoading = [[NSString alloc] initWithString:@"Loading..."];
 }
 
 - (void)addPullToRefreshHeader {
