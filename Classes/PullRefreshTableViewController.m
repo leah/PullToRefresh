@@ -35,7 +35,7 @@
 
 @implementation PullRefreshTableViewController
 
-@synthesize textPull, textRelease, textLoading, refreshHeaderView, refreshLabel, refreshArrow, refreshSpinner;
+@synthesize textPull, textRelease, textLoading, refreshHeaderView, refreshLabel, refreshArrow, refreshSpinner, refreshEnabled;
 
 - (id)initWithStyle:(UITableViewStyle)style {
   self = [super initWithStyle:style];
@@ -70,6 +70,7 @@
   textPull = [[NSString alloc] initWithString:@"Pull down to refresh..."];
   textRelease = [[NSString alloc] initWithString:@"Release to refresh..."];
   textLoading = [[NSString alloc] initWithString:@"Loading..."];
+  refreshEnabled = YES;
 }
 
 - (void)addPullToRefreshHeader {
@@ -93,6 +94,7 @@
     [refreshHeaderView addSubview:refreshLabel];
     [refreshHeaderView addSubview:refreshArrow];
     [refreshHeaderView addSubview:refreshSpinner];
+    refreshHeaderView.hidden = !refreshEnabled;
     [self.tableView addSubview:refreshHeaderView];
 }
 
@@ -108,7 +110,7 @@
             self.tableView.contentInset = UIEdgeInsetsZero;
         else if (scrollView.contentOffset.y >= -REFRESH_HEADER_HEIGHT)
             self.tableView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
-    } else if (isDragging && scrollView.contentOffset.y < 0) {
+    } else if (refreshEnabled && isDragging && scrollView.contentOffset.y < 0) {
         // Update the arrow direction and label
         [UIView beginAnimations:nil context:NULL];
         if (scrollView.contentOffset.y < -REFRESH_HEADER_HEIGHT) {
@@ -126,7 +128,7 @@
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if (isLoading) return;
     isDragging = NO;
-    if (scrollView.contentOffset.y <= -REFRESH_HEADER_HEIGHT) {
+    if (refreshEnabled && scrollView.contentOffset.y <= -REFRESH_HEADER_HEIGHT) {
         // Released above the header
         [self startLoading];
     }
@@ -166,6 +168,11 @@
     refreshLabel.text = self.textPull;
     refreshArrow.hidden = NO;
     [refreshSpinner stopAnimating];
+}
+
+-(void)setRefreshEnabled:(BOOL)enabled{
+    refreshEnabled = enabled;
+    refreshHeaderView.hidden = !enabled;
 }
 
 - (void)refresh {
