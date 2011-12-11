@@ -171,9 +171,17 @@
 - (void)refresh {
     // This is just a demo. Override this method with your custom reload action.
     // Don't forget to call stopLoading at the end.
-    [self performSelector:@selector(stopLoading) withObject:nil afterDelay:2.0];
+    [NSThread detachNewThreadSelector:@selector(refreshStep2) toTarget:self withObject:nil];
 }
-
+- (void)refreshStep2 {
+  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+  [self tablePullRefresh];
+  [self performSelectorOnMainThread:@selector(stopLoading) withObject:nil waitUntilDone:YES];
+    [pool release];
+}
+- (void)tablePullRefresh {
+  sleep(2);
+}
 - (void)dealloc {
     [refreshHeaderView release];
     [refreshLabel release];
