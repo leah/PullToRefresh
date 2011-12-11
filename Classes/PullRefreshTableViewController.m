@@ -169,8 +169,6 @@
 }
 
 - (void)refresh {
-    // This is just a demo. Override this method with your custom reload action.
-    // Don't forget to call stopLoading at the end.
     [NSThread detachNewThreadSelector:@selector(refreshStep2) toTarget:self withObject:nil];
 }
 - (void)refreshStep2 {
@@ -180,6 +178,7 @@
     [pool release];
 }
 - (void)tablePullRefresh {
+      // This is just a demo. Override this method with your custom reload action.
   sleep(2);
 }
 - (void)dealloc {
