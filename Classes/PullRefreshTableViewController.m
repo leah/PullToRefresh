@@ -67,9 +67,9 @@
 }
 
 - (void)setupStrings{
-  textPull = [[NSString alloc] initWithString:@"Pull down to refresh..."];
-  textRelease = [[NSString alloc] initWithString:@"Release to refresh..."];
-  textLoading = [[NSString alloc] initWithString:@"Loading..."];
+  textPull = [[NSString alloc] initWithString:NSLocalizedString(@"Pull down to refresh...", @"Pull down to refresh...")];
+  textRelease = [[NSString alloc] initWithString:NSLocalizedString(@"Release to refresh...", @"Release to refresh...")];
+  textLoading = [[NSString alloc] initWithString:NSLocalizedString(@"Loading...", @"Loading...")];
 }
 
 - (void)addPullToRefreshHeader {
