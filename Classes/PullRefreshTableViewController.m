@@ -101,32 +101,21 @@
     isDragging = YES;
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView 
-{
-    if (isLoading) 
-    {
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (isLoading) {
         // Update the content inset, good for section headers
         if (scrollView.contentOffset.y > 0)
-        {
             self.tableView.contentInset = UIEdgeInsetsZero;
-        }
         else if (scrollView.contentOffset.y >= -REFRESH_HEADER_HEIGHT)
-        {
             self.tableView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
-        }
-    } 
-    else if (isDragging && scrollView.contentOffset.y < 0) 
-    {
+    } else if (isDragging && scrollView.contentOffset.y < 0) {
         // Update the arrow direction and label
         [UIView animateWithDuration:0.25 animations:^{
-            if (scrollView.contentOffset.y < -REFRESH_HEADER_HEIGHT) 
-            {
+            if (scrollView.contentOffset.y < -REFRESH_HEADER_HEIGHT) {
                 // User is scrolling above the header
                 refreshLabel.text = self.textRelease;
                 [refreshArrow layer].transform = CATransform3DMakeRotation(M_PI, 0, 0, 1);
-            } 
-            else 
-            { 
+            } else { 
                 // User is scrolling somewhere within the header
                 refreshLabel.text = self.textPull;
                 [refreshArrow layer].transform = CATransform3DMakeRotation(M_PI * 2, 0, 0, 1);
@@ -144,8 +133,7 @@
     }
 }
 
-- (void)startLoading 
-{
+- (void)startLoading {
     isLoading = YES;
     
     // Show the header
@@ -160,8 +148,7 @@
     [self refresh];
 }
 
-- (void)stopLoading 
-{
+- (void)stopLoading {
     isLoading = NO;
     
     // Hide the header
