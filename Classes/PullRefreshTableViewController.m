@@ -110,16 +110,17 @@
             self.tableView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
     } else if (isDragging && scrollView.contentOffset.y < 0) {
         // Update the arrow direction and label
-        [UIView beginAnimations:nil context:NULL];
-        if (scrollView.contentOffset.y < -REFRESH_HEADER_HEIGHT) {
-            // User is scrolling above the header
-            refreshLabel.text = self.textRelease;
-            [refreshArrow layer].transform = CATransform3DMakeRotation(M_PI, 0, 0, 1);
-        } else { // User is scrolling somewhere within the header
-            refreshLabel.text = self.textPull;
-            [refreshArrow layer].transform = CATransform3DMakeRotation(M_PI * 2, 0, 0, 1);
-        }
-        [UIView commitAnimations];
+        [UIView animateWithDuration:0.25 animations:^{
+            if (scrollView.contentOffset.y < -REFRESH_HEADER_HEIGHT) {
+                // User is scrolling above the header
+                refreshLabel.text = self.textRelease;
+                [refreshArrow layer].transform = CATransform3DMakeRotation(M_PI, 0, 0, 1);
+            } else { 
+                // User is scrolling somewhere within the header
+                refreshLabel.text = self.textPull;
+                [refreshArrow layer].transform = CATransform3DMakeRotation(M_PI * 2, 0, 0, 1);
+            }
+        }];
     }
 }
 
@@ -134,34 +135,30 @@
 
 - (void)startLoading {
     isLoading = YES;
-
+    
     // Show the header
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.3];
-    self.tableView.contentInset = UIEdgeInsetsMake(REFRESH_HEADER_HEIGHT, 0, 0, 0);
-    refreshLabel.text = self.textLoading;
-    refreshArrow.hidden = YES;
-    [refreshSpinner startAnimating];
-    [UIView commitAnimations];
-
+    [UIView animateWithDuration:0.3 animations:^{
+        self.tableView.contentInset = UIEdgeInsetsMake(REFRESH_HEADER_HEIGHT, 0, 0, 0);
+        refreshLabel.text = self.textLoading;
+        refreshArrow.hidden = YES;
+        [refreshSpinner startAnimating];
+    }];
+    
     // Refresh action!
     [self refresh];
 }
 
 - (void)stopLoading {
     isLoading = NO;
-
+    
     // Hide the header
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDuration:0.3];
-    [UIView setAnimationDidStopSelector:@selector(stopLoadingComplete:finished:context:)];
-    self.tableView.contentInset = UIEdgeInsetsZero;
-    UIEdgeInsets tableContentInset = self.tableView.contentInset;
-    tableContentInset.top = 0.0;
-    self.tableView.contentInset = tableContentInset;
-    [refreshArrow layer].transform = CATransform3DMakeRotation(M_PI * 2, 0, 0, 1);
-    [UIView commitAnimations];
+    [UIView animateWithDuration:0.3 animations:^{
+        self.tableView.contentInset = UIEdgeInsetsZero;
+        [refreshArrow layer].transform = CATransform3DMakeRotation(M_PI * 2, 0, 0, 1);
+    } 
+                     completion:^(BOOL finished) {
+                         [self performSelector:@selector(stopLoadingComplete:finished:context:)];
+                     }];
 }
 
 - (void)stopLoadingComplete:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
