@@ -157,11 +157,11 @@
         [refreshArrow layer].transform = CATransform3DMakeRotation(M_PI * 2, 0, 0, 1);
     } 
                      completion:^(BOOL finished) {
-                         [self performSelector:@selector(stopLoadingComplete:finished:context:)];
+                         [self performSelector:@selector(stopLoadingComplete)];
                      }];
 }
 
-- (void)stopLoadingComplete:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
+- (void)stopLoadingComplete {
     // Reset the header
     refreshLabel.text = self.textPull;
     refreshArrow.hidden = NO;
