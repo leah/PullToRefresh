@@ -11,7 +11,7 @@ Inspired by [Tweetie 2](http://www.atebits.com/tweetie-iphone/), [Oliver Drobnik
 and [EGOTableViewPullRefresh](http://github.com/enormego/EGOTableViewPullRefresh).
 
 
-How to intall
+How to install
 
 1. Copy the files, [PullRefreshTableViewController.h](https://raw.github.com/leah/PullToRefresh/master/Classes/PullRefreshTableViewController.h),
 [PullRefreshTableViewController.m](https://raw.github.com/leah/PullToRefresh/master/Classes/PullRefreshTableViewController.m),
