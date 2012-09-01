@@ -15,7 +15,6 @@
 		28C286E10D94DF7D0034E888 /* DemoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* DemoTableViewController.m */; };
 		4CAFBC8011FC96FC00651784 /* PullRefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAFBC7F11FC96FC00651784 /* PullRefreshTableViewController.m */; };
 		4CAFBCEF11FC994F00651784 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 4CAFBCEE11FC994F00651784 /* README.markdown */; };
-		4CAFBD0111FC9B2100651784 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAFBD0011FC9B2100651784 /* QuartzCore.framework */; };
 		4CBE3BEE11FE21CB007696B3 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CBE3BED11FE21CB007696B3 /* arrow.png */; };
 /* End PBXBuildFile section */
 
@@ -33,7 +32,6 @@
 		4CAFBC7E11FC96FC00651784 /* PullRefreshTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullRefreshTableViewController.h; sourceTree = "<group>"; };
 		4CAFBC7F11FC96FC00651784 /* PullRefreshTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullRefreshTableViewController.m; sourceTree = "<group>"; };
 		4CAFBCEE11FC994F00651784 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
-		4CAFBD0011FC9B2100651784 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4CBE3BED11FE21CB007696B3 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* PullToRefresh-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PullToRefresh-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -46,7 +44,6 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
-				4CAFBD0111FC9B2100651784 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,7 +105,6 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4CAFBD0011FC9B2100651784 /* QuartzCore.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
@@ -143,6 +139,7 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "PullToRefresh" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
