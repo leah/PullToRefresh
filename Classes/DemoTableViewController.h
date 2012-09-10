@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PullRefreshTableViewController.h"
+#import <PullToRefresh/PullRefreshTableViewController.h>
 
 @interface DemoTableViewController : PullRefreshTableViewController {
     NSMutableArray *items;

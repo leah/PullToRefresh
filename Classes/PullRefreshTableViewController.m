@@ -82,7 +82,7 @@
     refreshLabel.textAlignment    = UITextAlignmentCenter;
     refreshLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 
-    refreshArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow.png"]];
+    refreshArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"PullToRefresh.framework/arrow.png"]];
     refreshArrow.frame = CGRectMake(floorf((REFRESH_HEADER_HEIGHT - 27) / 2),
                                     (floorf(REFRESH_HEADER_HEIGHT - 44) / 2),
                                     27, 44);

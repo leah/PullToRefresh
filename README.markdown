@@ -13,13 +13,19 @@ and [EGOTableViewPullRefresh](http://github.com/enormego/EGOTableViewPullRefresh
 
 How to install
 
-1. Copy the files, [PullRefreshTableViewController.h](https://raw.github.com/leah/PullToRefresh/master/Classes/PullRefreshTableViewController.h),
-[PullRefreshTableViewController.m](https://raw.github.com/leah/PullToRefresh/master/Classes/PullRefreshTableViewController.m),
-and [arrow.png](http://github.com/leah/PullToRefresh/raw/master/arrow.png) into your project.
+1. Download the PullToRefresh source code from https://github.com/leah/PullToRefresh
 
-2. Create a TableViewController that is a subclass of PullRefreshTableViewController.
+2. Select as active scheme "PullToRefresh Framework" for *iPhone/iPad simulator* and build it
+![](https://raw.github.com/JoseExposito/PullToRefresh/master/screenshots/screenshot1.png)
 
-3. Customize by adding your own refresh() method.
+3. Go to the PullToRefresh source code folder, a "build" folder was generated with the "PullToRefresh.framework" in
+
+4. In your project, go to your target and in "Build Phases" tab and add the "PullToRefresh.framework" in the "Copy Bundle Resources" and in the "Link Binary With Libraries" sections using the "+" button
+![](https://raw.github.com/JoseExposito/PullToRefresh/master/screenshots/screenshot2.png)
+
+5. Create a TableViewController that is a subclass of PullRefreshTableViewController.
+
+6. Customize by adding your own refresh() method.
 
 
 Enjoy!

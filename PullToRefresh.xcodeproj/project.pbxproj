@@ -16,7 +16,22 @@
 		4CAFBC8011FC96FC00651784 /* PullRefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAFBC7F11FC96FC00651784 /* PullRefreshTableViewController.m */; };
 		4CAFBCEF11FC994F00651784 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 4CAFBCEE11FC994F00651784 /* README.markdown */; };
 		4CBE3BEE11FE21CB007696B3 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CBE3BED11FE21CB007696B3 /* arrow.png */; };
+		82C4AD4015FE568C004E4CFE /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CBE3BED11FE21CB007696B3 /* arrow.png */; };
+		82C4AD4115FE5695004E4CFE /* PullRefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAFBC7F11FC96FC00651784 /* PullRefreshTableViewController.m */; };
+		82C4AD4415FE56AE004E4CFE /* PullRefreshTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CAFBC7E11FC96FC00651784 /* PullRefreshTableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		82C4AD4815FE5AA6004E4CFE /* PullToRefresh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82C4AD3315FE52AC004E4CFE /* PullToRefresh.framework */; };
+		82C4AD4915FE5AAE004E4CFE /* PullToRefresh.framework in Resources */ = {isa = PBXBuildFile; fileRef = 82C4AD3315FE52AC004E4CFE /* PullToRefresh.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		82C4AD4615FE5A9A004E4CFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 82C4AD3215FE52AC004E4CFE;
+			remoteInfo = "PullToRefresh Framework";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -33,6 +48,7 @@
 		4CAFBC7F11FC96FC00651784 /* PullRefreshTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PullRefreshTableViewController.m; path = Classes/PullRefreshTableViewController.m; sourceTree = "<group>"; };
 		4CAFBCEE11FC994F00651784 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
 		4CBE3BED11FE21CB007696B3 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		82C4AD3315FE52AC004E4CFE /* PullToRefresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PullToRefresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D1107310486CEB800E47090 /* PullToRefresh-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PullToRefresh-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -41,9 +57,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82C4AD4815FE5AA6004E4CFE /* PullToRefresh.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82C4AD3015FE52AC004E4CFE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				1D6058910D05DD3D006BFB54 /* PullToRefresh.app */,
+				82C4AD3315FE52AC004E4CFE /* PullToRefresh.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -123,6 +148,17 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		82C4AD4315FE56A8004E4CFE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82C4AD4415FE56AE004E4CFE /* PullRefreshTableViewController.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		1D6058900D05DD3D006BFB54 /* PullToRefresh Example */ = {
 			isa = PBXNativeTarget;
@@ -135,11 +171,31 @@
 			buildRules = (
 			);
 			dependencies = (
+				82C4AD4715FE5A9A004E4CFE /* PBXTargetDependency */,
 			);
 			name = "PullToRefresh Example";
 			productName = PullToRefresh;
 			productReference = 1D6058910D05DD3D006BFB54 /* PullToRefresh.app */;
 			productType = "com.apple.product-type.application";
+		};
+		82C4AD3215FE52AC004E4CFE /* PullToRefresh Framework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 82C4AD3D15FE52AC004E4CFE /* Build configuration list for PBXNativeTarget "PullToRefresh Framework" */;
+			buildPhases = (
+				82C4AD2F15FE52AC004E4CFE /* Sources */,
+				82C4AD3015FE52AC004E4CFE /* Frameworks */,
+				82C4AD3115FE52AC004E4CFE /* Resources */,
+				82C4AD4315FE56A8004E4CFE /* Headers */,
+				82C4AD4515FE57E6004E4CFE /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "PullToRefresh Framework";
+			productName = "PullToRefresh Framework";
+			productReference = 82C4AD3315FE52AC004E4CFE /* PullToRefresh.framework */;
+			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -162,6 +218,7 @@
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* PullToRefresh Example */,
+				82C4AD3215FE52AC004E4CFE /* PullToRefresh Framework */,
 			);
 		};
 /* End PBXProject section */
@@ -173,10 +230,35 @@
 			files = (
 				4CAFBCEF11FC994F00651784 /* README.markdown in Resources */,
 				4CBE3BEE11FE21CB007696B3 /* arrow.png in Resources */,
+				82C4AD4915FE5AAE004E4CFE /* PullToRefresh.framework in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82C4AD3115FE52AC004E4CFE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82C4AD4015FE568C004E4CFE /* arrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		82C4AD4515FE57E6004E4CFE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Script to build the framework as universal from:\n# https://github.com/jverkoey/iOS-Framework#step-3-build-the-other-platform\n# With some changes to adapt it to use this method:\n# http://db-in.com/blog/2011/05/creating-universal-framework-to-iphone-ios/#list_contents\nset -e\nset +u\n\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\nexit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\nSF_TARGET_NAME=${PROJECT_NAME}\nSF_EXECUTABLE_PATH=\"${SF_TARGET_NAME}\"\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\n\n# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\nSF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\nSF_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\nSF_OTHER_PLATFORM=iphonesimulator\nelse\nSF_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SF_SDK_PLATFORM$ ]]\nthen\nSF_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}\"\nelse\necho \"Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR\"\nexit 1\nfi\n\n# Build the other platform\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${SF_OTHER_PLATFORM}${SF_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\" $ACTION\n\n# Smash the two static libraries into one fat binary and store it in a temporal file\nrm -f \"${BUILT_PRODUCTS_DIR}/${PROJECT_NAME}\"\nlipo -create \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/${SF_EXECUTABLE_PATH}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/${SF_EXECUTABLE_PATH}\" -output \"${BUILT_PRODUCTS_DIR}/${PROJECT_NAME}\"\n\n# Copy the generated framework to the build directory\nif [ -d \"${SRCROOT}/build\" ]; then\nrm -fr \"${SRCROOT}/build\"\nfi\n\nmkdir -p \"${SRCROOT}/build\"\ncp -fR \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}\" \"${SRCROOT}/build/${SF_WRAPPER_NAME}\"\n\n# Copy the universal binary to the framework\ncp -a \"${BUILT_PRODUCTS_DIR}/${PROJECT_NAME}\" \"${SRCROOT}/build/${SF_WRAPPER_NAME}\"\nrm -f \"${BUILT_PRODUCTS_DIR}/${PROJECT_NAME}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1D60588E0D05DD3D006BFB54 /* Sources */ = {
@@ -190,7 +272,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		82C4AD2F15FE52AC004E4CFE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82C4AD4115FE5695004E4CFE /* PullRefreshTableViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		82C4AD4715FE5A9A004E4CFE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 82C4AD3215FE52AC004E4CFE /* PullToRefresh Framework */;
+			targetProxy = 82C4AD4615FE5A9A004E4CFE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
@@ -203,8 +301,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PullToRefresh_Prefix.pch;
 				INFOPLIST_FILE = "PullToRefresh-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = PullToRefresh;
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -216,9 +316,85 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PullToRefresh_Prefix.pch;
 				INFOPLIST_FILE = "PullToRefresh-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = PullToRefresh;
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		82C4AD3E15FE52AC004E4CFE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					armv6,
+					armv7,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				INFOPLIST_FILE = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				MACH_O_TYPE = mh_object;
+				MACOSX_DEPLOYMENT_TARGET = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = PullToRefresh;
+				SDKROOT = iphoneos;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		82C4AD3F15FE52AC004E4CFE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					armv6,
+					armv7,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				INFOPLIST_FILE = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				MACH_O_TYPE = mh_object;
+				MACOSX_DEPLOYMENT_TARGET = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = PullToRefresh;
+				SDKROOT = iphoneos;
+				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
 		};
@@ -260,6 +436,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		82C4AD3D15FE52AC004E4CFE /* Build configuration list for PBXNativeTarget "PullToRefresh Framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				82C4AD3E15FE52AC004E4CFE /* Debug */,
+				82C4AD3F15FE52AC004E4CFE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "PullToRefresh" */ = {
 			isa = XCConfigurationList;
