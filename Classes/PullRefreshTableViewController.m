@@ -72,13 +72,15 @@
 }
 
 - (void)addPullToRefreshHeader {
-    refreshHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0 - REFRESH_HEADER_HEIGHT, 320, REFRESH_HEADER_HEIGHT)];
+    CGFloat width = [[UIScreen mainScreen] bounds].size.width;
+    refreshHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0 - REFRESH_HEADER_HEIGHT, width, REFRESH_HEADER_HEIGHT)];
     refreshHeaderView.backgroundColor = [UIColor clearColor];
 
-    refreshLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, REFRESH_HEADER_HEIGHT)];
-    refreshLabel.backgroundColor = [UIColor clearColor];
-    refreshLabel.font = [UIFont boldSystemFontOfSize:12.0];
-    refreshLabel.textAlignment = UITextAlignmentCenter;
+    refreshLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, REFRESH_HEADER_HEIGHT)];
+    refreshLabel.backgroundColor  = [UIColor clearColor];
+    refreshLabel.font             = [UIFont boldSystemFontOfSize:12.0];
+    refreshLabel.textAlignment    = UITextAlignmentCenter;
+    refreshLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 
     refreshArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow.png"]];
     refreshArrow.frame = CGRectMake(floorf((REFRESH_HEADER_HEIGHT - 27) / 2),
@@ -114,7 +116,7 @@
                 // User is scrolling above the header
                 refreshLabel.text = self.textRelease;
                 refreshArrow.transform = CGAffineTransformMakeRotation(M_PI);
-            } else { 
+            } else {
                 // User is scrolling somewhere within the header
                 refreshLabel.text = self.textPull;
                 refreshArrow.transform = CGAffineTransformMakeRotation(0);
