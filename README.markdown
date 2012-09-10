@@ -17,11 +17,9 @@ How to install
 [PullRefreshTableViewController.m](https://raw.github.com/leah/PullToRefresh/master/Classes/PullRefreshTableViewController.m),
 and [arrow.png](http://github.com/leah/PullToRefresh/raw/master/arrow.png) into your project.
 
-2. Link against the QuartzCore framework (used for rotating the arrow image).
+2. Create a TableViewController that is a subclass of PullRefreshTableViewController.
 
-3. Create a TableViewController that is a subclass of PullRefreshTableViewController.
-
-4. Customize by adding your own refresh() method.
+3. Customize by adding your own refresh() method.
 
 
 Enjoy!
