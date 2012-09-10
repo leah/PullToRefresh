@@ -27,7 +27,6 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <QuartzCore/QuartzCore.h>
 #import "PullRefreshTableViewController.h"
 
 #define REFRESH_HEADER_HEIGHT 52.0f
@@ -66,22 +65,24 @@
   [self addPullToRefreshHeader];
 }
 
-- (void)setupStrings{
+- (void)setupStrings {
   textPull = [[NSString alloc] initWithString:@"Pull down to refresh..."];
   textRelease = [[NSString alloc] initWithString:@"Release to refresh..."];
   textLoading = [[NSString alloc] initWithString:@"Loading..."];
 }
 
 - (void)addPullToRefreshHeader {
-    refreshHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0 - REFRESH_HEADER_HEIGHT, 320, REFRESH_HEADER_HEIGHT)];
+    CGFloat width = [[UIScreen mainScreen] bounds].size.width;
+    refreshHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0 - REFRESH_HEADER_HEIGHT, width, REFRESH_HEADER_HEIGHT)];
     refreshHeaderView.backgroundColor = [UIColor clearColor];
 
-    refreshLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, REFRESH_HEADER_HEIGHT)];
-    refreshLabel.backgroundColor = [UIColor clearColor];
-    refreshLabel.font = [UIFont boldSystemFontOfSize:12.0];
-    refreshLabel.textAlignment = UITextAlignmentCenter;
+    refreshLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, REFRESH_HEADER_HEIGHT)];
+    refreshLabel.backgroundColor  = [UIColor clearColor];
+    refreshLabel.font             = [UIFont boldSystemFontOfSize:12.0];
+    refreshLabel.textAlignment    = UITextAlignmentCenter;
+    refreshLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 
-    refreshArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow.png"]];
+    refreshArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"PullToRefresh.framework/arrow.png"]];
     refreshArrow.frame = CGRectMake(floorf((REFRESH_HEADER_HEIGHT - 27) / 2),
                                     (floorf(REFRESH_HEADER_HEIGHT - 44) / 2),
                                     27, 44);
@@ -114,11 +115,11 @@
             if (scrollView.contentOffset.y < -REFRESH_HEADER_HEIGHT) {
                 // User is scrolling above the header
                 refreshLabel.text = self.textRelease;
-                [refreshArrow layer].transform = CATransform3DMakeRotation(M_PI, 0, 0, 1);
-            } else { 
+                refreshArrow.transform = CGAffineTransformMakeRotation(M_PI);
+            } else {
                 // User is scrolling somewhere within the header
                 refreshLabel.text = self.textPull;
-                [refreshArrow layer].transform = CATransform3DMakeRotation(M_PI * 2, 0, 0, 1);
+                refreshArrow.transform = CGAffineTransformMakeRotation(0);
             }
         }];
     }
@@ -154,7 +155,7 @@
     // Hide the header
     [UIView animateWithDuration:0.3 animations:^{
         self.tableView.contentInset = UIEdgeInsetsZero;
-        [refreshArrow layer].transform = CATransform3DMakeRotation(M_PI * 2, 0, 0, 1);
+        refreshArrow.transform = CGAffineTransformMakeRotation(0);
     } 
                      completion:^(BOOL finished) {
                          [self performSelector:@selector(stopLoadingComplete)];
@@ -174,6 +175,7 @@
     [self performSelector:@selector(stopLoading) withObject:nil afterDelay:2.0];
 }
 
+#if !__has_feature(objc_arc)
 - (void)dealloc {
     [refreshHeaderView release];
     [refreshLabel release];
@@ -184,5 +186,6 @@
     [textLoading release];
     [super dealloc];
 }
+#endif
 
 @end
