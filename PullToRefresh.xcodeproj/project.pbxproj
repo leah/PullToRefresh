@@ -204,6 +204,7 @@
 				GCC_PREFIX_HEADER = PullToRefresh_Prefix.pch;
 				INFOPLIST_FILE = "PullToRefresh-Info.plist";
 				PRODUCT_NAME = PullToRefresh;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -216,6 +217,7 @@
 				GCC_PREFIX_HEADER = PullToRefresh_Prefix.pch;
 				INFOPLIST_FILE = "PullToRefresh-Info.plist";
 				PRODUCT_NAME = PullToRefresh;
+				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

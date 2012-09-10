@@ -65,7 +65,7 @@
   [self addPullToRefreshHeader];
 }
 
-- (void)setupStrings{
+- (void)setupStrings {
   textPull = [[NSString alloc] initWithString:@"Pull down to refresh..."];
   textRelease = [[NSString alloc] initWithString:@"Release to refresh..."];
   textLoading = [[NSString alloc] initWithString:@"Loading..."];
@@ -175,6 +175,7 @@
     [self performSelector:@selector(stopLoading) withObject:nil afterDelay:2.0];
 }
 
+#if !__has_feature(objc_arc)
 - (void)dealloc {
     [refreshHeaderView release];
     [refreshLabel release];
@@ -185,5 +186,6 @@
     [textLoading release];
     [super dealloc];
 }
+#endif
 
 @end
