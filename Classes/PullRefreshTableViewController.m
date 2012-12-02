@@ -27,10 +27,14 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+// UPDATE by Chaufourier jeremy on 03/12/12
+// Add native pull to refresh for iOS 6+
+
 #import <QuartzCore/QuartzCore.h>
 #import "PullRefreshTableViewController.h"
 
 #define REFRESH_HEADER_HEIGHT 52.0f
+#define __IPHONE_OS_VERSION [[[UIDevice currentDevice] systemVersion] integerValue]*10000
 
 
 @implementation PullRefreshTableViewController
@@ -40,7 +44,14 @@
 - (id)initWithStyle:(UITableViewStyle)style {
   self = [super initWithStyle:style];
   if (self != nil) {
-    [self setupStrings];
+      [self setupStrings];
+      
+      if (__IPHONE_OS_VERSION >= __IPHONE_6_0) {
+          UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+          [refreshControl addTarget:self action:@selector(refresh)
+                   forControlEvents:UIControlEventValueChanged];
+          self.refreshControl = refreshControl;
+      }
   }
   return self;
 }
@@ -62,14 +73,16 @@
 }
 
 - (void)viewDidLoad {
-  [super viewDidLoad];
-  [self addPullToRefreshHeader];
+    [super viewDidLoad];
+    if (__IPHONE_OS_VERSION < __IPHONE_6_0) {
+        [self addPullToRefreshHeader];
+    }
 }
 
 - (void)setupStrings{
-  textPull = [[NSString alloc] initWithString:@"Pull down to refresh..."];
-  textRelease = [[NSString alloc] initWithString:@"Release to refresh..."];
-  textLoading = [[NSString alloc] initWithString:@"Loading..."];
+    textPull = [[NSString alloc] initWithString:NSLocalizedString(@"Pull down to refresh...", @"Pull down to refresh...")];
+    textRelease = [[NSString alloc] initWithString:NSLocalizedString(@"Release to refresh...", @"Release to refresh...")];
+    textLoading = [[NSString alloc] initWithString:NSLocalizedString(@"Loading...", @"Loading...")];
 }
 
 - (void)addPullToRefreshHeader {
@@ -97,6 +110,7 @@
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    if (__IPHONE_OS_VERSION >= __IPHONE_6_0) return;
     if (isLoading) return;
     isDragging = YES;
 }
@@ -125,6 +139,7 @@
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (__IPHONE_OS_VERSION >= __IPHONE_6_0) return;
     if (isLoading) return;
     isDragging = NO;
     if (scrollView.contentOffset.y <= -REFRESH_HEADER_HEIGHT) {
@@ -134,38 +149,50 @@
 }
 
 - (void)startLoading {
-    isLoading = YES;
-    
-    // Show the header
-    [UIView animateWithDuration:0.3 animations:^{
-        self.tableView.contentInset = UIEdgeInsetsMake(REFRESH_HEADER_HEIGHT, 0, 0, 0);
-        refreshLabel.text = self.textLoading;
-        refreshArrow.hidden = YES;
-        [refreshSpinner startAnimating];
-    }];
-    
-    // Refresh action!
-    [self refresh];
+    if (__IPHONE_OS_VERSION >= __IPHONE_6_0) {
+        [self.refreshControl beginRefreshing];
+    }
+    else {
+        isLoading = YES;
+        
+        // Show the header
+        [UIView animateWithDuration:0.3 animations:^{
+            self.tableView.contentInset = UIEdgeInsetsMake(REFRESH_HEADER_HEIGHT, 0, 0, 0);
+            refreshLabel.text = self.textLoading;
+            refreshArrow.hidden = YES;
+            [refreshSpinner startAnimating];
+        }];
+        
+        // Refresh action!
+        [self refresh];
+    }
 }
 
 - (void)stopLoading {
-    isLoading = NO;
-    
-    // Hide the header
-    [UIView animateWithDuration:0.3 animations:^{
-        self.tableView.contentInset = UIEdgeInsetsZero;
-        [refreshArrow layer].transform = CATransform3DMakeRotation(M_PI * 2, 0, 0, 1);
-    } 
-                     completion:^(BOOL finished) {
-                         [self performSelector:@selector(stopLoadingComplete)];
-                     }];
+    if (__IPHONE_OS_VERSION >= __IPHONE_6_0) {
+        [self.refreshControl endRefreshing];
+    }
+    else {
+        isLoading = NO;
+        
+        // Hide the header
+        [UIView animateWithDuration:0.3 animations:^{
+            self.tableView.contentInset = UIEdgeInsetsZero;
+            [refreshArrow layer].transform = CATransform3DMakeRotation(M_PI * 2, 0, 0, 1);
+        } 
+                         completion:^(BOOL finished) {
+                             [self performSelector:@selector(stopLoadingComplete)];
+                         }];
+    }
 }
 
 - (void)stopLoadingComplete {
-    // Reset the header
-    refreshLabel.text = self.textPull;
-    refreshArrow.hidden = NO;
-    [refreshSpinner stopAnimating];
+    if (__IPHONE_OS_VERSION < __IPHONE_6_0) {
+        // Reset the header
+        refreshLabel.text = self.textPull;
+        refreshArrow.hidden = NO;
+        [refreshSpinner stopAnimating];
+    }
 }
 
 - (void)refresh {
