@@ -1,4 +1,6 @@
-PullToRefresh
+**Attention:** As of iOS 6.0, there is a [UIRefreshControl](https://developer.apple.com/library/ios/documentation/uikit/reference/UIRefreshControl_class/Reference/Reference.html) object that makes adding pull-to-refresh functionality super easy. If you only need to support iOS 6.0 and later, I'd recommend using [UIRefreshControl](https://developer.apple.com/library/ios/documentation/uikit/reference/UIRefreshControl_class/Reference/Reference.html) instead.
+
+### PullToRefresh
 
 A simple iPhone TableViewController for adding pull-to-refresh functionality.
 
