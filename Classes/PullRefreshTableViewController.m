@@ -35,11 +35,16 @@
 
 @implementation PullRefreshTableViewController
 
-@synthesize textPull, textRelease, textLoading, refreshHeaderView, refreshLabel, refreshArrow, refreshSpinner;
+@synthesize textPull, textRelease, textLoading, refreshHeaderView, refreshLabel, refreshArrow, refreshSpinner, arrowLeftPadding;
+
+- (void) defaults {
+  arrowLeftPadding = 0;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style {
   self = [super initWithStyle:style];
   if (self != nil) {
+    [self defaults];
     [self setupStrings];
   }
   return self;
@@ -48,6 +53,7 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
   self = [super initWithCoder:aDecoder];
   if (self != nil) {
+    [self defaults];
     [self setupStrings];
   }
   return self;
@@ -56,6 +62,7 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self != nil) {
+    [self defaults];
     [self setupStrings];
   }
   return self;
@@ -82,12 +89,14 @@
     refreshLabel.textAlignment = NSTextAlignmentCenter;
 
     refreshArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow.png"]];
-    refreshArrow.frame = CGRectMake(floorf((REFRESH_HEADER_HEIGHT - 27) / 2),
+    refreshArrow.frame = CGRectMake(floorf((REFRESH_HEADER_HEIGHT - 27) / 2) + arrowLeftPadding,
                                     (floorf(REFRESH_HEADER_HEIGHT - 44) / 2),
                                     27, 44);
 
     refreshSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    refreshSpinner.frame = CGRectMake(floorf(floorf(REFRESH_HEADER_HEIGHT - 20) / 2), floorf((REFRESH_HEADER_HEIGHT - 20) / 2), 20, 20);
+    refreshSpinner.frame = CGRectMake(floorf(floorf(REFRESH_HEADER_HEIGHT - 20) / 2) + arrowLeftPadding, 
+                                      floorf((REFRESH_HEADER_HEIGHT - 20) / 2), 
+                                      20, 20);
     refreshSpinner.hidesWhenStopped = YES;
 
     [refreshHeaderView addSubview:refreshLabel];
