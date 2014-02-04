@@ -40,6 +40,7 @@
     NSString *textPull;
     NSString *textRelease;
     NSString *textLoading;
+    BOOL refreshEnabled;
 }
 
 @property (nonatomic, retain) UIView *refreshHeaderView;
@@ -49,6 +50,7 @@
 @property (nonatomic, copy) NSString *textPull;
 @property (nonatomic, copy) NSString *textRelease;
 @property (nonatomic, copy) NSString *textLoading;
+@property (nonatomic, assign) BOOL refreshEnabled;
 
 - (void)setupStrings;
 - (void)addPullToRefreshHeader;
