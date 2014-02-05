@@ -29,6 +29,9 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol PullRefreshTableViewDelegate
+- (void)refresh;
+@end
 
 @interface PullRefreshTableViewController : UITableViewController {
     UIView *refreshHeaderView;
@@ -42,10 +45,29 @@
     NSString *textLoading;
 }
 
-@property (nonatomic, retain) UIView *refreshHeaderView;
-@property (nonatomic, retain) UILabel *refreshLabel;
-@property (nonatomic, retain) UIImageView *refreshArrow;
-@property (nonatomic, retain) UIActivityIndicatorView *refreshSpinner;
+#ifndef PTR_STRONG
+#if __has_feature(objc_arc)
+#define PTR_STRONG strong
+#else
+#define PTR_STRONG retain
+#endif
+#endif
+
+#ifndef PTR_WEAK
+#if __has_feature(objc_arc_weak)
+#define PTR_WEAK weak
+#elif __has_feature(objc_arc)
+#define PTR_WEAK unsafe_unretained
+#else
+#define PTR_WEAK assign
+#endif
+#endif
+
+@property (nonatomic, PTR_WEAK) id<PullRefreshTableViewDelegate> refreshDelegate;
+@property (nonatomic, PTR_STRONG) UIView *refreshHeaderView;
+@property (nonatomic, PTR_STRONG) UILabel *refreshLabel;
+@property (nonatomic, PTR_STRONG) UIImageView *refreshArrow;
+@property (nonatomic, PTR_STRONG) UIActivityIndicatorView *refreshSpinner;
 @property (nonatomic, copy) NSString *textPull;
 @property (nonatomic, copy) NSString *textRelease;
 @property (nonatomic, copy) NSString *textLoading;
@@ -54,6 +76,5 @@
 - (void)addPullToRefreshHeader;
 - (void)startLoading;
 - (void)stopLoading;
-- (void)refresh;
 
 @end

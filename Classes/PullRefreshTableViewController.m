@@ -35,7 +35,7 @@
 
 @implementation PullRefreshTableViewController
 
-@synthesize textPull, textRelease, textLoading, refreshHeaderView, refreshLabel, refreshArrow, refreshSpinner;
+@synthesize textPull, textRelease, textLoading, refreshDelegate, refreshHeaderView, refreshLabel, refreshArrow, refreshSpinner;
 
 - (id)initWithStyle:(UITableViewStyle)style {
   self = [super initWithStyle:style];
@@ -67,9 +67,9 @@
 }
 
 - (void)setupStrings{
-  textPull = [[NSString alloc] initWithString:@"Pull down to refresh..."];
-  textRelease = [[NSString alloc] initWithString:@"Release to refresh..."];
-  textLoading = [[NSString alloc] initWithString:@"Loading..."];
+  textPull = NSLocalizedString(@"Pull down to refresh...", nil);
+  textRelease = NSLocalizedString(@"Release to refresh...", nil);
+  textLoading = NSLocalizedString(@"Loading...", nil);
 }
 
 - (void)addPullToRefreshHeader {
@@ -145,7 +145,7 @@
     }];
     
     // Refresh action!
-    [self refresh];
+    [self.refreshDelegate refresh];
 }
 
 - (void)stopLoading {
@@ -168,12 +168,15 @@
     [refreshSpinner stopAnimating];
 }
 
+/*
 - (void)refresh {
     // This is just a demo. Override this method with your custom reload action.
     // Don't forget to call stopLoading at the end.
     [self performSelector:@selector(stopLoading) withObject:nil afterDelay:2.0];
 }
+*/
 
+#if !__has_feature(objc_arc)
 - (void)dealloc {
     [refreshHeaderView release];
     [refreshLabel release];
@@ -184,5 +187,6 @@
     [textLoading release];
     [super dealloc];
 }
+#endif
 
 @end

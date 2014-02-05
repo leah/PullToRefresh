@@ -8,11 +8,13 @@
 
 #import "DemoTableViewController.h"
 
+@interface DemoTableViewController () <PullRefreshTableViewDelegate>
 
 @implementation DemoTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	self.refreshDelegate = self;
 
     self.title = @"Pull to Refresh";
     items = [[NSMutableArray alloc] initWithObjects:@"What time is it?", nil];
@@ -39,6 +41,9 @@
 
     return cell;
 }
+
+#pragma mark - PullRefreshTableViewDelegate implementation
+#pragma mark @required
 
 - (void)refresh {
     [self performSelector:@selector(addItem) withObject:nil afterDelay:2.0];
