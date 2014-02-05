@@ -27,6 +27,9 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+// UPDATE by Chaufourier jeremy on 03/12/12
+// Add native pull to refresh for iOS 6+
+
 #import <UIKit/UIKit.h>
 
 
