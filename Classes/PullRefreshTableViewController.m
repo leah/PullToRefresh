@@ -27,7 +27,6 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <QuartzCore/QuartzCore.h>
 #import "PullRefreshTableViewController.h"
 
 #define REFRESH_HEADER_HEIGHT 52.0f
@@ -114,11 +113,11 @@
             if (scrollView.contentOffset.y < -REFRESH_HEADER_HEIGHT) {
                 // User is scrolling above the header
                 refreshLabel.text = self.textRelease;
-                [refreshArrow layer].transform = CATransform3DMakeRotation(M_PI, 0, 0, 1);
+                refreshArrow.transform = CGAffineTransformMakeRotation(M_PI);
             } else { 
                 // User is scrolling somewhere within the header
                 refreshLabel.text = self.textPull;
-                [refreshArrow layer].transform = CATransform3DMakeRotation(M_PI * 2, 0, 0, 1);
+                refreshArrow.transform = CGAffineTransformMakeRotation(0);
             }
         }];
     }
@@ -154,7 +153,7 @@
     // Hide the header
     [UIView animateWithDuration:0.3 animations:^{
         self.tableView.contentInset = UIEdgeInsetsZero;
-        [refreshArrow layer].transform = CATransform3DMakeRotation(M_PI * 2, 0, 0, 1);
+        refreshArrow.transform = CGAffineTransformMakeRotation(0);
     } 
                      completion:^(BOOL finished) {
                          [self performSelector:@selector(stopLoadingComplete)];
