@@ -23,7 +23,7 @@
 
     DemoTableViewController *demoTableViewController = [[[DemoTableViewController alloc] init] autorelease];
     navigationController = [[UINavigationController alloc] initWithRootViewController:demoTableViewController];
-
+    navigationController.navigationBar.translucent = NO;
     [window addSubview:navigationController.view];
     [window makeKeyAndVisible];
 
