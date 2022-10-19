@@ -24,7 +24,7 @@
     DemoTableViewController *demoTableViewController = [[[DemoTableViewController alloc] init] autorelease];
     navigationController = [[UINavigationController alloc] initWithRootViewController:demoTableViewController];
 
-    [window addSubview:navigationController.view];
+    [window setRootViewController:navigationController];
     [window makeKeyAndVisible];
 
     return YES;
